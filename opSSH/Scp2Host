@@ -1,0 +1,38 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+source PandaInclude
+
+#scp something to remote
+#the last parameter is the destination
+#all other parameter is the file need to copy
+PARA_NUM="$#"
+PARA_ARRAY=$*
+SCP=${UTILITY_DIR}/Scp
+
+#Parameter number should be more than 2
+if [ ${PARA_NUM} -ge 2 ]
+then
+	#Put all the file need to copy into FILE_LIST
+	COUNT="1"
+	for FILE in ${PARA_ARRAY}
+	do		
+		#put file in FILE_LIST, 
+		#put last parameter in DEST_DIR
+		if [ ${COUNT} -lt ${PARA_NUM} ]
+		then
+			FILE_LIST="${FILE_LIST} ${FILE}"
+		else
+			DEST_DIR="${FILE}"
+		fi
+
+		COUNT="`expr ${COUNT} + 1`"
+	done
+
+	#Call SCP, and do scp
+	${SCP} 
+else
+	echo "Parameter Number should be more than 2"
+fi
+
+cd -
+

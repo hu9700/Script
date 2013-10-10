@@ -1,0 +1,21 @@
+#!/bin/bash
+PARA_NUM=1
+SSH_UMOUNT=fusermount
+UMOUNT_FLAG=u
+ERROR_PARA="Need ${PARA_NUM} parameter"
+
+if [ $# -ne ${PARA_NUM} ]
+then
+	echo ${ERROR_PARA}
+else
+	MOUNTPOINT=$1
+		ERROR_MOUNTPOINT="do not exist mountpoint \"${MOUNTPOINT}\""
+
+	if [ -d ${MOUNTPOINT} ]
+	then
+		${SSH_UMOUNT} -${UMOUNT_FLAG} ${MOUNTPOINT}
+	else
+		echo ${ERROR_MOUNTPOINT}
+	fi
+fi
+

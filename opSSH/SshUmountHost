@@ -1,0 +1,14 @@
+#!/bin/bash
+#use fusermount -u to umount one ssh disk
+cd "$(dirname "$0")"
+
+source HostInclude
+
+MOUNT_POINT=./${HOST_NAME}_mount
+SSHUMOUNT_SCR=${UTILITY_DIR}/SshfsUmount
+
+${SSHUMOUNT_SCR} ${MOUNT_POINT}
+
+rmdir ${MOUNT_POINT}
+cd -
+

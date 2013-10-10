@@ -1,0 +1,5 @@
+SSH_USER=panda
+SSH_PORT=22
+SSH_HOST=192.168.1.67
+UTILITY_DIR=../utility
+HOST_NAME=PandaBoard

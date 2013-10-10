@@ -1,0 +1,16 @@
+#!/bin/bash
+#us ssh to login host
+
+PARA_NUM=3
+SSH=ssh
+ERROR_PARA="Need ${PARA_NUM} parameter"
+
+if [ $# -ne ${PARA_NUM} ]
+then
+	echo ${ERROR_PARA}
+else
+	SSH_USER=$1
+	SSH_HOST=$2
+	SSH_PORT=$3
+	${SSH} -p ${SSH_PORT} ${SSH_USER}@${SSH_HOST}
+fi

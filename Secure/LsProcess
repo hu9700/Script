@@ -1,0 +1,3 @@
+#!/bin/bash
+# to list all the Process running
+ps -ux | awk 'BEGIN {FS=" "};{n=11;while($n){printf("%s",$n);printf(" ");n++};printf("\n")}'

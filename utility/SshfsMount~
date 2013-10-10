@@ -1,0 +1,30 @@
+#!/bin/bash
+PARA_NUM=6
+SSHFS=sshfs
+ERROR_PARA="Need ${PARA_NUM} parameter"
+
+if [ $# -ne ${PARA_NUM} ]
+then
+	echo ${ERROR_PARA}
+else
+	SSH_USER=$1
+	SSH_SERVER=$2
+	SSH_PORT=$3
+	SSH_PSW=$4
+	MOUNTPOINT=$5
+	HOSTPOINT=$6
+
+	ERROR_MOUNTPOINT="do not exist mountpoint \"${MOUNTPOINT}\""
+	
+	if [ -d ${MOUNTPOINT} ]
+	then
+		#echo ${SSH_PSW}\n | 
+		${SSHFS} ${SSH_USER}@${SSH_SERVER}:/ ${MOUNTPOINT}  -p ${SSH_PORT}
+		#sleep 1
+		#echo ${SSH_PSW}\n
+	else
+		echo ${ERROR_MOUNTPOINT}
+
+	fi	
+fi
+
