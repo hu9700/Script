@@ -3,3 +3,7 @@
 3 Finish ram disk use
 4 use sed to edit awk script, to add parameter
 5 Finish sft file
+6 Write git using
+7 Write a script to back up the system, include rpm installed
+8 Write a script to check and verified the file installed, use rpm verify
+9 Write a script to monitor the port using. 

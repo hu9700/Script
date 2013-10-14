@@ -1,9 +1,0 @@
-#!/bin/bash
-
-cd "$(dirname "$0")"
-source PandaInclude
-
-SSH_LOGIN=${UTILITY_DIR}/SshLogin
-${SSH_LOGIN} ${SSH_USER} ${SSH_HOST} ${SSH_PORT}
-cd -
-
