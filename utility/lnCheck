@@ -1,0 +1,3 @@
+#!/bin/bash
+#print where the symbol file linked to
+readlink $1
