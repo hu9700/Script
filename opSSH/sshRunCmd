@@ -1,0 +1,15 @@
+#!/bin/bash
+cd "$(dirname "$0")"
+source HostInclude
+
+PARA_NUM=1
+ERROR_PARA="Need more or equal than ${PARA_NUM} parameter"
+SSH=ssh
+
+if [ $# -gt 0 ]
+then
+	${SSH} -p ${SSH_PORT} ${SSH_USER}@${SSH_HOST} $@
+else
+	echo ${ERROR_PARA}
+fi	
+cd -

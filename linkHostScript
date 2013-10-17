@@ -1,14 +1,31 @@
 #!/bin/bash
-OP_LIST=sshRemoteOp
-HOST_LIST=
+OP_LIST=`ls -C -d op*/`
+HOST_LIST=`ls -C -d host*/`
 
 cd `dirname $0`
 
 #scan different OP path
 for OP_PATH in ${OP_LIST}
 do
+	cd ${OP_PATH}
 	#list the script file, 
 	#but do not list the file ending with ~
-    SCRIPT_LIST=`ls -C --hide=*~ ${OP_PATH}`
-	
+    SCRIPT_LIST=`ls -C --hide=*~ ./`
+    
+    #go back to Script root directory
+    cd ..
+    for HOST_PATH in ${HOST_LIST}
+    do
+    	cd ${HOST_PATH}
+    	for SCRIPT in ${SCRIPT_LIST}
+    	do
+    		if [ ! -L ./${SCRIPT} ]
+    		then
+    			ln -s ../${OP_PATH}/${SCRIPT}
+    		fi
+    		#rm ${SCRIPT}
+    	done   	
+    	cd ..
+    done
 done
+
